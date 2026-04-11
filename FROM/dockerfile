@@ -1,6 +1,5 @@
 FROM redhat/ubi9
 RUN dnf intall -y nginx -y
 CMD ["nginx", "-g", "daemon off;"]   //SYSTEMCTL IT WONT WORK IN DOCKERFILE, BECAUSE IT IS NOT A FULL OS, IT IS JUST A CONTAINER, SO WE USE CMD TO 
-                                        START THE NGINX SERVICE IN THE FOREGROUND.
+                                        // START THE NGINX SERVICE IN THE FOREGROUND.
 
-                                        
