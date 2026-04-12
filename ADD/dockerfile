@@ -1,0 +1,17 @@
+FROM nginx:latest
+RUN rm -f /usr/share/nginx/html/index.html
+COPY index.html /usr/share/nginx/html
+EXPOSE 80
+ENV MONGO_USER = "roboshop" \
+    MONGO_PASSWORD = "roboshop" \
+    MONGO_URL = "mongodb://mongodb:27017/roboshop"
+CMD ["nginx", "-g", "daemon off;"]  
+LABEL maintainer="Sandeep"  \
+        version="1.0"  \
+        description="This is nginx image for roboshop project"  \
+        company="SNDP"  \
+
+
+
+
+        
