@@ -1,0 +1,11 @@
+FROM almalinux:9
+RUN dnf install -y nginx -y
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]  
+LABEL maintainer="Sandeep"  \
+        version="1.0"  \
+        description="This is nginx image for roboshop project"  \
+        company="SNDP"  \
+
+
+        
