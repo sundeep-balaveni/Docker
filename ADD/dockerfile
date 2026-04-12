@@ -1,6 +1,6 @@
 FROM nginx:latest
 RUN rm -f /usr/share/nginx/html/index.html
-COPY index.html /usr/share/nginx/html
+ADD https://github.com/sundeep-balaveni/Front_end_page_responsive.git /usr/share/nginx/html
 EXPOSE 80
 ENV MONGO_USER = "roboshop" \
     MONGO_PASSWORD = "roboshop" \
