@@ -6,4 +6,4 @@ RUN useradd roboshop
 
 USER roboshop
 
-CMD ["nginx" "-g" "daemon off;"]
+CMD ["nginx" "-g" , "daemon off;"]
