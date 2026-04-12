@@ -1,0 +1,10 @@
+ARG version=latest   #This is a build argument with a default value of "latest". You can override this value when building the Docker image by using the --build-arg flag.
+FROM almalinux:{version:-8}
+RUN dnf install -y nginx:{version} -y
+
+CMD ["nginx", "-g", "daemon off;"] 
+
+# while building the image we can override the version argument like below docker build --build-arg version=9 -t nginx:9 .  #This command 
+
+
+
