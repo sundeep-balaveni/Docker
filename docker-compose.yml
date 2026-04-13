@@ -1,0 +1,24 @@
+services:
+  catalouge:
+    build:
+      dockerfile: CATALOUGE.dockerfile
+    image: catalouge:2.2.2
+    depends_on:
+    - mongodb
+  mongodb:
+    build:
+      dockerfile: MONGODB.dockerfile
+    image: mongodb:2.2.2
+  
+networks:
+  default: 
+    driver: bridge
+    name: roboshop
+    external: true
+
+
+    
+
+
+  
+  
