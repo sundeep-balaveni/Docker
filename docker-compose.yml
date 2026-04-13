@@ -1,7 +1,8 @@
 services:
   catalouge:
     build:
-      dockerfile: ./CATALOUGE.dockerfile
+      context: ./CATALOUGE
+      dockerfile: dockerfile
     image: catalouge:2.2.2
     container_name: catalouge
     depends_on:
