@@ -13,7 +13,17 @@ services:
       - user
       - cart
       - shipping
-      
+
+  cart:
+    build:
+      context: ./CART
+      dockerfile: dockerfile
+    image: cart:2.2.2
+    container_name: cart
+    depends_on:
+      - redis
+      - catalouge
+
 
 
   catalouge:
