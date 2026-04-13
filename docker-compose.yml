@@ -90,7 +90,7 @@ services:
       context: ./RABIT-MQ
       dockerfile: dockerfile
     image: rabbitmq:3.8.0
-    container_name: rabbitmq
+    container_name: rabitmq
 
 
 networks:
