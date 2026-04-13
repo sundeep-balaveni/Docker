@@ -27,7 +27,7 @@ services:
       dockerfile: dockerfile
     image: user:2.2.2
     container_name: user
-    depends_on:
+    depends_on: 
       - redis
 
   redis:
