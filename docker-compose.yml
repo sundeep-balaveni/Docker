@@ -13,7 +13,7 @@ services:
       - user
       - cart
       - shipping
-
+      - payment
   cart:
     build:
       context: ./CART
@@ -80,6 +80,17 @@ services:
       dockerfile: dockerfile
     image: rabbitmq:3.8.0
     container_name: rabbitmq
+
+  payment:
+    build:
+      context: ./PAYMENT
+      dockerfile: dockerfile
+    image: payment:2.2.2
+    container_name: payment
+    depends_on:
+      - rabbitmq
+      - mysql
+      - user
 networks:
   default: 
     driver: bridge
