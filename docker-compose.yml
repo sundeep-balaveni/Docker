@@ -3,13 +3,14 @@ services:
     build:
       dockerfile: CATALOUGE.dockerfile
     image: catalouge:2.2.2
+    container_name: catalouge
     depends_on:
     - mongodb
   mongodb:
     build:
       dockerfile: MONGODB.dockerfile
     image: mongodb:2.2.2
-  
+    container_name: mongodb  
 networks:
   default: 
     driver: bridge
