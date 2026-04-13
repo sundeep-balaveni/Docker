@@ -23,7 +23,7 @@ services:
     - mongodb
   user:
     build:
-      context: ./USER
+      context: ./ROBO-USER
       dockerfile: dockerfile
     image: user:2.2.2
     container_name: user
