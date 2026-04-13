@@ -3,8 +3,8 @@ services:
     build:
       context: ./CATALOUGE
       dockerfile: dockerfile
-    image: catalouge:2.2.2
-    container_name: catalouge
+    image: catalogue:2.2.2
+    container_name: catalogue
     depends_on:
     - mongodb
   mongodb:
