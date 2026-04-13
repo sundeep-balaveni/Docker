@@ -73,6 +73,13 @@ services:
       dockerfile: dockerfile
     image: mongodb:2.2.2
     container_name: mongodb  
+
+  rabitmq:
+    build:
+      context: ./RABIT-MQ
+      dockerfile: dockerfile
+    image: rabbitmq:3.8.0
+    container_name: rabbitmq
 networks:
   default: 
     driver: bridge
