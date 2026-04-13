@@ -1,4 +1,18 @@
 services:
+  frontend:
+    build:
+      context: ./FRONTEND
+      dockerfile: dockerfile
+    image: frontend:2.2.2
+    container_name: frontend
+    ports:
+      - "80:80"
+     # - "443:443"
+    depends_on:
+      - catalouge
+      - user
+
+
   catalouge:
     build:
       context: ./CATALOUGE
@@ -7,6 +21,18 @@ services:
     container_name: catalogue
     depends_on:
     - mongodb
+  user:
+    build:
+      context: ./USER
+      dockerfile: dockerfile
+    image: user:2.2.2
+    container_name: user
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7.0
+    container_name: redis
   mongodb:
     build:
       context: ./MONGODB
