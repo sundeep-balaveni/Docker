@@ -2,4 +2,6 @@ FROM redis:7.2
 
 EXPOSE 6379
 
-CMD ["redis-server", "--bind", "0.0.0.0", "--protected-mode", "no"]
+
+
+# CMD ["redis-server", "--bind", "0.0.0.0", "--protected-mode", "no"]
