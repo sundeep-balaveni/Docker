@@ -53,6 +53,7 @@ services:
     container_name: user
     depends_on: 
       - redis
+      - mongodb
 
   redis:
     build:
