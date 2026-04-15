@@ -113,12 +113,12 @@ volumes:
   redis-data:
     driver: local
     name: redis-data
-    external: true
+    external: false
 
   mongodb-data:
     driver: local
     name: mongodb-data
-    external: true
+    external: false
 
   mysql-data:
     name: mysql-data
