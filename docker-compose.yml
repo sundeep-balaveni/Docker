@@ -121,9 +121,8 @@ volumes:
     external: true
 
   mysql-data:
-    driver: local
     name: mysql-data
-    external: true
+
 
 
     
