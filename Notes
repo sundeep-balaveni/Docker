@@ -1,0 +1,123 @@
+📘 Docker + CMD + ENTRYPOINT + Nginx (Proper Notes)
+🧠 1. VM vs Docker (Foundation)
+🔹 In Virtual Machines:
+Uses systemd
+Services managed using:
+systemctl start nginx
+Services run in background (daemon mode)
+🔹 In Docker:
+❌ No systemd
+❌ No service manager
+✅ Docker directly runs a process
+
+👉 Important Rule:
+
+Container runs only if the main process is running (foreground)
+
+🔥 2. Nginx Behavior in Docker
+🔹 Default behavior of Nginx
+nginx
+Runs in background ❌
+Container exits immediately ❌
+🔹 Correct way in Docker:
+nginx -g "daemon off;"
+Explanation:
+-g → pass global config from CLI
+daemon off; → run in foreground
+
+👉 Required to keep container alive
+
+⚡ 3. CMD (Command)
+Definition:
+
+CMD defines the default command to run when container starts
+
+CMD ["nginx", "-g", "daemon off;"]
+Behavior:
+Can be overridden at runtime
+docker run myimage bash
+
+👉 CMD is replaced
+
+⚡ 4. ENTRYPOINT
+Definition:
+
+ENTRYPOINT defines the main executable (fixed command)
+
+ENTRYPOINT ["nginx"]
+Behavior:
+Cannot be easily overridden
+Always runs
+🔥 5. CMD vs ENTRYPOINT (Core Difference)
+Feature	CMD	ENTRYPOINT
+Purpose	Default command	Main executable
+Override	Yes	No
+Flexibility	High	Low
+🚀 6. Best Practice (Production)
+ENTRYPOINT ["nginx"]
+CMD ["-g", "daemon off;"]
+Execution:
+nginx -g "daemon off;"
+🔁 7. Passing Arguments
+Command:
+docker run myimage -v
+Behavior:
+ENTRYPOINT → stays (nginx)
+CMD → replaced (-g daemon off; → -v)
+Final execution:
+nginx -v
+🔹 8. Meaning of -v
+
+Depends on context:
+
+In Nginx → version
+In Docker → volume mount
+In general CLI → verbose
+🔹 9. Why NOT daemon on
+daemon on → runs in background ❌
+Container exits immediately ❌
+
+👉 Always use:
+
+daemon off;
+🔹 10. Node.js in Docker
+Node.js
+Not a service
+Runs directly in foreground
+node app.js
+
+👉 No need for daemon off
+
+🔹 11. Why CMD is Required
+
+👉 Docker does NOT know what to run
+
+Without CMD or ENTRYPOINT:
+
+Container starts
+Immediately stops ❌
+🔥 12. PID 1 Concept
+First process in container = PID 1
+This is your main app (nginx/node)
+
+👉 If it stops:
+
+Container stops
+🧠 13. Key Rules to Remember
+Docker runs process, not services
+Must run in foreground
+One main process per container
+CMD = default command
+ENTRYPOINT = fixed command
+🎯 Interview Answer (Perfect)
+
+“Docker does not use systemd, so it directly runs the application process defined in CMD or ENTRYPOINT. The process must run in the foreground to keep the container alive. For Nginx, we use ‘daemon off’, while Node.js runs directly since it already runs in the foreground.”
+
+⚡ Quick Revision (1-minute)
+VM → systemd manages services
+Docker → runs process directly
+Nginx → needs daemon off
+CMD → default, replaceable
+ENTRYPOINT → fixed
+PID 1 → main process
+Container stops if process stops
