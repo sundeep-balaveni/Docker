@@ -126,4 +126,4 @@ Container stops if process stops
 
 👉 Expected answer:
 
-“PID 1 is the main process inside the container. It is responsible for keeping the container alive and handling signals.”
+“PID 1 is the main process inside the container. It is responsible for keeping the container alive and handling signals.” .
