@@ -4,7 +4,7 @@ FROM python:3.9-slim as builder
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip3 install  -no-cache-dir --prefix=/mypackages -r requirements.txt 
+RUN pip3 install --no-cache-dir --prefix=/mypackages -r requirements.txt 
 ENV PYTHONPATH=/mypackages/lib/python3.9/site-packages
 
 #production stage
