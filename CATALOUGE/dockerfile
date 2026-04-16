@@ -8,6 +8,8 @@ EXPOSE 27017
 
 RUN addgroup -s roboshop && adduser -S -s /bin/bash -G roboshop roboshop
 
+RUN chown -R roboshop:roboshop /app
+
 USER roboshop
 
 CMD ["node", "server.js"]
