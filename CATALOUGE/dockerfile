@@ -5,6 +5,11 @@ RUN npm install
 ENV MONGO = true \
     MONGO_URL = "mongodb://mongodb:27017/catalogue"
 EXPOSE 27017
+
+RUN addgroup -s roboshop && adduser -S -s /bin/bash -G roboshop roboshop
+
+USER roboshop
+
 CMD ["node", "server.js"]
 
 
