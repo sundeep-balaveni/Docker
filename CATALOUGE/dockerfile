@@ -1,36 +1,36 @@
-# FROM node:20
-# WORKDIR /app
-# COPY package.json .
-# COPY *.js .
-# RUN npm install
-# ENV MONGO = true \
-#     MONGO_URL = "mongodb://mongodb:27017/catalogue"
-# EXPOSE 27017
-# CMD ["node", "server.js"]
-
-
-
-# ---------- Stage 1: Build ----------
-FROM node:20 AS builder
-
+FROM node:20-slim         # why slim? because it is a smaller image that contains only the necessary components to run Node.js applications, which helps reduce the overall size of the Docker image and improves security by minimizing the attack surface.
 WORKDIR /app
-
-COPY package.json ./
+COPY package.json .
+COPY *.js .
 RUN npm install
-
-COPY *.js ./
-
-# ---------- Stage 2: Production ----------
-FROM node:20-slim
-
-WORKDIR /app
-
-# Copy only necessary files from builder
-COPY --from=builder /app /app
-
-ENV MONGO=true \
-    MONGO_URL="mongodb://mongodb:27017/catalogue"
-
+ENV MONGO = true \
+    MONGO_URL = "mongodb://mongodb:27017/catalogue"
 EXPOSE 27017
-
 CMD ["node", "server.js"]
+
+
+
+# # ---------- Stage 1: Build ----------
+# FROM node:20 AS builder
+
+# WORKDIR /app
+
+# COPY package.json ./
+# RUN npm install
+
+# COPY *.js ./
+
+# # ---------- Stage 2: Production ----------
+# FROM node:20-slim
+
+# WORKDIR /app
+
+# # Copy only necessary files from builder
+# COPY --from=builder /app /app
+
+# ENV MONGO=true \
+#     MONGO_URL="mongodb://mongodb:27017/catalogue"
+
+# EXPOSE 27017
+
+# CMD ["node", "server.js"]
