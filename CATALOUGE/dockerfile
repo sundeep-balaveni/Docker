@@ -1,5 +1,4 @@
-FROM node:20-slim         # why slim? because it is a smaller image that contains only the necessary components to run Node.js applications, which helps reduce the overall size of the Docker image and improves security by minimizing the attack surface.
-WORKDIR /app
+FROM node:20-slim         
 COPY package.json .
 COPY *.js .
 RUN npm install
