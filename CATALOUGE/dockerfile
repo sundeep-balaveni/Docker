@@ -1,12 +1,14 @@
-FROM node:20-slim         
+FROM node:20-slim     
+WORKDIR /app    
 COPY package.json .
 COPY *.js .
 RUN npm install
 ENV MONGO = true \
     MONGO_URL = "mongodb://mongodb:27017/catalogue"
+
 EXPOSE 27017
 
-RUN addgroup -s roboshop && adduser -S -s /bin/bash -G roboshop roboshop
+RUN groupadd -r roboshop && useradd -s /bin/bash -r -g roboshop roboshop
 
 RUN chown -R roboshop:roboshop /app
 
