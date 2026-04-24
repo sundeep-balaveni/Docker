@@ -20,7 +20,7 @@ ENV PYTHONPATH=/mypackages/lib/python3.9/site-packages
 
 FROM python:3.9-slim
 WORKDIR /app
-COPY --from=builder /mypackages /usr/lib
+COPY --from=builder /mypackages/lib/python3.9/site-packages /usr/lib
 
 
 ENV CART_PORT=8080 \
