@@ -15,16 +15,16 @@ services:
       - shipping
       - payment
 
-  payment:
-    build:
-      context: ./PAYMENT
-      dockerfile: dockerfile
-    image: payment:2.2.2
-    container_name: payment
-    depends_on:
-      - rabitmq
-      - cart
-      - user
+  # payment:
+  #   build:
+  #     context: ./PAYMENT
+  #     dockerfile: dockerfile
+  #   image: payment:2.2.2
+  #   container_name: payment
+  #   depends_on:
+  #     - rabitmq
+  #     - cart
+  #     - user
   cart:
     build:
       context: ./CART
