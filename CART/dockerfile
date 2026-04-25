@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:20 as builder
 
 WORKDIR /app
 
@@ -7,9 +7,15 @@ COPY *.js .
 
 RUN npm install
 
+
+FROM node:20-slim
+WORKDIR /app
+COPY --from=builder /app /app
+
 ENV REDIS_HOST="redis" \
     CATALOGUE_HOST="catalogue" \
     CATALOGUE_PORT="8080"
+    
 
 EXPOSE 8080
 
