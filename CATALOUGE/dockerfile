@@ -39,8 +39,6 @@ COPY --from=builder /app /app
 # Set environment variables for MongoDB connection
 
 
-COPY --from=builder /app /app /app
-
 ENV MONGO=true \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
 
