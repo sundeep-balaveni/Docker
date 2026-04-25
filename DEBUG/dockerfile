@@ -3,3 +3,5 @@ RUN dnf install telnet -y
 RUN dnf install net-tools -y
 RUN dnf  install curl -y
 RUN dnf install ping -y
+
+CMD ["sleep", "5000"]
